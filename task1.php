@@ -21,7 +21,7 @@ while ($N/10 > 0) {
     if ($N%10 < 5) {
         $count++;
     };
-    $N = floor($N/10);
+    $N = (int)($N/10);
 }
 
-echo $count . "\n";
+echo $count;
