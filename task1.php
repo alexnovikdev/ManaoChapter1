@@ -2,6 +2,7 @@
 
 $N = 1234567890;
 $count = 0;
+$length = 0;
 
 
 /*$stringN = (string)$N;
@@ -15,8 +16,8 @@ for ($i = 0; $i < $length; $i++) {
 
 echo $count;*/
 
-$length = strlen((string)$N);
-for ($i = 0; $i < $length; $i++) {
+
+while ($N/10) {
     if ($N%10 < 5) {
         $count++;
     };
