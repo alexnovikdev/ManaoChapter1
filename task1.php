@@ -17,11 +17,11 @@ for ($i = 0; $i < $length; $i++) {
 echo $count;*/
 
 
-while ($N/10) {
+while ($N/10 > 0) {
     if ($N%10 < 5) {
         $count++;
     };
     $N = floor($N/10);
 }
 
-echo $count;
+echo $count . "\n";
