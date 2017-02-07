@@ -2,7 +2,9 @@
 
 $N = 1234567890;
 $count = 0;
-$stringN = (string)$N;
+
+
+/*$stringN = (string)$N;
 
 $length = strlen((string)$N);
 for ($i = 0; $i < $length; $i++) {
@@ -11,6 +13,14 @@ for ($i = 0; $i < $length; $i++) {
     }
 }
 
-echo $count;
+echo $count;*/
 
-// https://github.com/alexnovikdev/ManaoChapter1/blob/master/task1.php
+$length = strlen((string)$N);
+for ($i = 0; $i < $length; $i++) {
+    if ($N%10 < 5) {
+        $count++;
+    };
+    $N = floor($N/10);
+}
+
+echo $count;
