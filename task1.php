@@ -12,3 +12,5 @@ for ($i = 0; $i < $length; $i++) {
 }
 
 echo $count;
+
+// https://github.com/alexnovikdev/ManaoChapter1/blob/master/task1.php
