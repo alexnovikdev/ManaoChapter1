@@ -2,10 +2,6 @@
 
 for ($i = 1000; $i < 10000; $i += 2) {
 
-    if ($i % 2 != 0) {
-        continue;
-    }
-
     $number = $i;
     $currentNum = $number % 10;
 
