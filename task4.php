@@ -18,6 +18,7 @@ for ($i = 1000; $i < 10000; $i += 2) {
     }
 
     do {
+
         $number = (int)($number / 10);
         $lastNumber = $number % 10;
 
@@ -35,16 +36,23 @@ for ($i = 1000; $i < 10000; $i += 2) {
                 break;
             }
         }
-        /*if ($lastNumber == $currentNum) {
-            echo "third\n";
-            break;
-        }*/
-
     } while ((int)($number/10) != 0);
 
 
-    if ((int)($number/10) == 0) {
-        echo $i . "\n";
+    if ($down) {
+        if ((int)($number/10) == 0) {
+            if ($number > (int)(($i % 1000)/100)) {
+                echo $i . "\n";
+            }
+        }
+    }
+
+    if ($up) {
+        if ((int)($number/10) == 0) {
+            if ($number < (int)(($i % 1000)/100)) {
+                echo $i . "\n";
+            }
+        }
     }
 
 }
