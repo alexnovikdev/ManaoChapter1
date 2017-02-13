@@ -5,14 +5,14 @@
 for ($i = 1000; $i < 10000; $i++) {
 
     $number = $i;
-    $count = 10;
+    $div = 10;
     $resultCount = 0;
 
     while ($number > 0) {
-        if (($number % $count) == 0 || ($number % $count) == 2 || ($number % $count) == 3 || ($number % $count) == 7) {
+        if (($number % $div) == 0 || ($number % $div) == 2 || ($number % $div) == 3 || ($number % $div) == 7) {
             $resultCount++;
         }
-        $number = (int)($number / 10);
+        $number = (int)($number / $div);
     }
 
     if ($resultCount == 4) {
