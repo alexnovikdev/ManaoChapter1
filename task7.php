@@ -13,11 +13,11 @@ while ($N > 0) {
         if ($copyN % 10 == $res) {
             $count++;
         }
+        if ($count > 1) {
+            $flag = true;
+            break 2;
+        }
         $copyN = (int)($copyN / 10);
-    }
-    if ($count > 1) {
-        $flag = true;
-        break;
     }
     $N = (int)($N / 10);
 }
