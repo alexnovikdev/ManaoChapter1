@@ -8,7 +8,7 @@ $outerCount = 0;
 
 while ($N > 0) {
     $copyN = $N;
-    $res = $N % 10 . "\n";
+    $res = $N % 10;
     while ($copyN > 0) {
         if ($copyN % 10 == $res) {
             $count++;
