@@ -5,13 +5,9 @@
 for ($i = 1000; $i < 10000; $i++) {
 
     $number = $i;
+    $innerNumber = $i;
     $div = 10;
     $resultCount = 0;
-
-    $caseNull = 0;
-    $caseTwo = 0;
-    $caseThree = 0;
-    $caseSeven = 0;
 
     while ($number > 0) {
 
@@ -19,31 +15,28 @@ for ($i = 1000; $i < 10000; $i++) {
 
         switch ($num) {
             case 0:
-                $resultCount++;
-                $caseNull++;
-                break;
+
             case 2:
-                $resultCount++;
-                $caseTwo++;
-                break;
+
             case 3:
-                $resultCount++;
-                $caseThree++;
-                break;
+
             case 7:
+                while ($innerNumber > 0) {
+                    $innerNumber = (int)($innerNumber / 10);
+                    if (($innerNumber % 10) == $num) {
+                        continue 4;
+                    }
+                }
                 $resultCount++;
-                $caseSeven++;
                 break;
             default:
                 continue 3;
         }
 
-        if ($caseNull > 1 || $caseTwo > 1 || $caseThree > 1 || $caseSeven > 1) {
-            continue 2;
-        }
-
         $number = (int)($number / $div);
     }
+
+
 
     if ($resultCount == 4) {
         echo $i . "\n";
