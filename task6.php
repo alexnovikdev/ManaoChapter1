@@ -5,12 +5,13 @@
 for ($i = 1000; $i < 10000; $i++) {
 
     $number = $i;
-    $innerNumber = $i;
     $div = 10;
-    $resultCount = 0;
+    $count = 0;
+    $sum = 0;
 
     while ($number > 0) {
 
+        $copyI = $i;
         $num = $number % $div;
 
         switch ($num) {
@@ -21,24 +22,20 @@ for ($i = 1000; $i < 10000; $i++) {
             case 3:
 
             case 7:
-                while ($innerNumber > 0) {
-                    $innerNumber = (int)($innerNumber / 10);
-                    if (($innerNumber % 10) == $num) {
-                        continue 4;
-                    }
+                if ((int)($copyI / $div) % $div == $copyI % $div) {
+                    continue 3;
                 }
-                $resultCount++;
+                $count++;
+                $sum += $num;
                 break;
             default:
                 continue 3;
         }
 
         $number = (int)($number / $div);
-    }
 
-
-
-    if ($resultCount == 4) {
-        echo $i . "\n";
+        if ($count == 4 && $sum == 12) {
+            echo $i . "\n";
+        }
     }
 }
