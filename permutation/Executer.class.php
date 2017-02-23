@@ -1,7 +1,7 @@
 <?php
 
 namespace MyExecutor;
-
+require "Worder.class.php";
 require "MyException.class.php";
 
 class Executor {
@@ -10,12 +10,14 @@ class Executor {
     private $length;
     private $numPlacement;
     private $result;
+    private $worker;
 
     function __construct($string, $length) {
         $this->str = $string;
         $this->length = $length;
         $this->numberOfPlacement();
         $this->findAllPlacement();
+        $this->worker = new \Worder($string, $length);
     }
 
     private function toFactorial($string) {
@@ -40,47 +42,19 @@ class Executor {
 
     private function findAllPlacement() {
         try {
+            $numberIt = strlen($this->str);
             $result = [];
 
-            $arr = str_split($this->str);
-
-            for ($k = 0; $k < $this->numPlacement / $this->length; $k++) {
-
-                $pos = 0;
-
-                for ($i = 0; $i < $this->length; $i++) {
-                    $arrRes[] = $arr[$pos];
-                    $arrRes[] = $arr[$pos + $i + 1];
-                    $result[] = $arrRes;
-                    $arrRes = [];
+            for ($i = 0; $i < $numberIt; $i++) {
+                $first = $this->str{0};
+                for ($j = 1; $j < $numberIt; $j++) {
+                    $result[] = $first . $this->str{$j};
                 }
-
-                $arr[] = array_shift($arr);
+                $this->str = mb_substr($this->str, 1);
+                $this->str .= $first;
             }
 
-            $arr = array_reverse($arr);
-
-            for ($k = 0; $k < $this->numPlacement / $this->length; $k++) {
-
-                $pos = 0;
-
-                for ($i = 0; $i < $this->length; $i++) {
-                    $arrRes[] = $arr[$pos];
-                    $arrRes[] = $arr[$pos + $i + 1];
-                    $result[] = $arrRes;
-                    $arrRes = [];
-                }
-
-                $arr[] = array_shift($arr);
-            }
-
-            $answer = [];
-
-            foreach ($result as $res) {
-                $answer[] = $res[0] . $res[1];
-            }
-
-            $this->result = array_unique($answer);
+            $this->result = $result;
 
             if (!$this->result) {
                 throw new \MyException("Результат пуст");
@@ -93,9 +67,9 @@ class Executor {
 
     function getResult() {
         foreach ($this->result as $item) {
-            print_r($item);
-            echo "\n";
-        }
+            echo $item[0] . $item[1] . "\n";
+        };
+        echo "(Только для трехзначных по двум цифрам)\n";
     }
 
     function showErrors() {
@@ -109,6 +83,18 @@ class Executor {
             echo "<hr/>";
             echo "Ошибок нет";
         }
+    }
+
+    function getValidResult() {
+        echo "<hr/>";
+        echo "Правильный код Павла)";
+        echo "<br/>";
+        echo "<br/>";
+        $this->result = $this->worker->getWords();
+        foreach ($this->result as $item) {
+            echo $item[0] . $item[1] . "\n";
+        };
+        echo "<hr/>";
     }
 
 }

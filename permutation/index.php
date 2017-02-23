@@ -11,3 +11,5 @@ echo "<hr/>";
 $executor->getResult();
 
 $executor->showErrors();
+
+$executor->getValidResult();
